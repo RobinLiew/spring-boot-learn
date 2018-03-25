@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.robinliew.data.ContactRepository;
 import com.robinliew.domain.Contact;
@@ -24,27 +25,27 @@ import com.robinliew.domain.Contact;
  * @author RobinLiew
  *
  */
-@Controller
+@RestController
 public class ContactsController {
 	
-//	private ContactRepository contactRepo;
-//	
-//	@Autowired
-//	public ContactsController(ContactRepository contactRepo) {
-//		super();
-//		this.contactRepo = contactRepo;
-//	}
+	private ContactRepository contactRepo;
+	
+	@Autowired
+	public ContactsController(ContactRepository contactRepo) {
+		super();
+		this.contactRepo = contactRepo;
+	}
 
 	@RequestMapping(value="/home",method=RequestMethod.GET)
 	public String home(Map<String,Object> model){
-//		List<Contact> contacts=contactRepo.findAll();
-//		model.put("contacts", contacts);
+		List<Contact> contacts=contactRepo.findAll();
+		model.put("contacts", contacts);
 		return "home";
 	}
 	
 	@RequestMapping(value="/home",method=RequestMethod.POST)
 	public String submit(Contact contact){
-//		contactRepo.save(contact);
+		contactRepo.save(contact);
 		return "redirect:/";
 	}
 }

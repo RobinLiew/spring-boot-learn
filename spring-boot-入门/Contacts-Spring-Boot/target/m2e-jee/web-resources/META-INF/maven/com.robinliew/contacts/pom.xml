@@ -17,11 +17,11 @@
   	<version>1.1.4.RElEASE</version>
   </parent>
   -->
-  
+  <!--  
   <profiles>
     <profile>
         <id>jdk-1.8</id>
-        <!-- 另外一种激活方式 -->
+        
         <activation>
             <activeByDefault>true</activeByDefault>
             <jdk>1.8</jdk>
@@ -33,6 +33,7 @@
         </properties>
     </profile>
 	</profiles>
+	-->
   
   <!-- 添加依赖版本管理 -->
   <dependencyManagement>
@@ -65,11 +66,23 @@
     	<groupId>org.springframework.boot</groupId>
     	<artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+    
     <!-- 添加thymeleaf模板 --> 
     <dependency>   
         <groupId>org.springframework.boot</groupId>    
         <artifactId>spring-boot-starter-thymeleaf</artifactId>    
     </dependency>
+    
+    <!-- 添加持久层依赖，这里使用H2数据库和JDBC（Spring的JdbcTemplate） -->
+    <dependency>
+    	<groupId>org.springframework.boot</groupId>
+    	<artifactId>spring-boot-starter-jdbc</artifactId>
+    </dependency>
+    <dependency>
+    	<groupId>com.h2database</groupId>
+    	<artifactId>h2</artifactId>
+    </dependency>
+    
   </dependencies>
   
   <build>
